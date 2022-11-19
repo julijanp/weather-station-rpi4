@@ -1,0 +1,55 @@
+body {
+    text-align: center;
+    background-color: SlateGrey;
+}
+p {
+    color: white;
+    font-family: Shanti;
+    font-size: 2em;
+    display: inline-block;
+    margin:  20px;
+}
+img {
+    width: 550px;
+    padding: 20px;
+    background-color: White;
+    border-radius: 10%;
+}
+
+h1 {
+    font-size:3em;
+}
+.footer{ 
+       position: relative;     
+       text-align: center;
+       top: 10px;   
+       bottom: 0px; 
+       width: 100%;
+       font-weight:bold;
+       font-size: 2em;
+}  
+
+.c_me {
+	background: none no-repeat scroll 0 0 #fff;
+	position: relative;
+	background-color: #ff0;
+	text-align: center;
+
+}
+
+.chart_button {
+  font: bold 30px Arial;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 6px 12px 6px 12px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+}
+
+.measurements {
+ font-weight: bold;
+		
+}

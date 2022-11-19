@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Weather data</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">	
+	</head>
+
+	<body>
+		<div class="measurements">
+			<h1>Weather data</h1>
+			<p>Measured at: {{time}}</p>
+			<br>
+			<p>Temperature: {{temperature}} &degC</p>
+			<p>Pressure: {{pressure}} kPa</p>
+			<br>
+			<p>Humidity: {{humidity}} %</p>
+			<p>Rainfall: {{rainfall}} mm</p>
+                        <br>
+                        <p>Rainfall(24h): {{rain24}} mm</p>
+                        <p>Rainfall(30 days): {{rain30}} mm</p>
+			<br>
+			<p>Wind speed: {{windspeed}} km/h</p>
+			<p>Wind gust speed: {{windgust}} km/h</p>
+			<br>
+			<p>Wind direction: {{winddirection}}</p>
+                	
+		</div>
+
+		<div class="WindRose">
+		{% if winddirection=="N" %}
+		<img src="/static/windrose/N.png" alt="North">
+		{% endif %}
+
+		{% if winddirection=="NE" %}
+                <img src="/static/windrose/NE.png" alt="North-East">
+                {% endif %}
+
+		{% if winddirection=="E" %}
+                <img src="/static/windrose/E.png" alt="East">
+                {% endif %}
+		
+		{% if winddirection=="SE" %}
+                <img src="/static/windrose/SE.png" alt="South-East">
+                {% endif %}
+
+		{% if winddirection=="S" %}
+                <img src="/static/windrose/S.png" alt="South">
+                {% endif %}
+
+		{% if winddirection=="SW" %}
+                <img src="/static/windrose/SW.png" alt="South-West">
+                {% endif %}
+
+		{% if winddirection=="W" %}
+                <img src="/static/windrose/W.png" alt="West">
+                {% endif %}
+
+		{% if winddirection=="NW" %}
+                <img src="/static/windrose/NW.png" alt="North-West">
+                {% endif %}
+		</div>
+		<br>
+		<a class="chart_button" href="/chart">Charts</a>	
+                <div class="footer">#juliFIZIK</div>
+	</body>
+</html>

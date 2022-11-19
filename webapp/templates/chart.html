@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <meta charset="UTF-8">
+                <title>Weather data</title>
+                <link rel="stylesheet" href="{{ url_for('static', filename='css/chart.css') }}">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.1/chart.min.js" integrity="sha512-O2fWHvFel3xjQSi9FyzKXWLTvnom+lOYR/AUEThL/fbP4hv1Lo5LCFCGuTXBRyKC4K4DJldg5kxptkgXAzUpvA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+        </head>
+
+        <body>
+                <h1>Weather data chart page</h1>
+		<div class="c_me">
+                	<p>Measured at: {{time}}</p>
+                	<br>
+                	<p>Temperature: {{temperature}} &degC</p>
+                	<p>Pressure: {{pressure}} kPa</p>
+                	<p>Humidity: {{humidity}} %</p>
+			<br>
+			<p>Wind speed: {{windspeed}} km/h</p>
+			<p>Wind gust speed: {{windgust}} km/h</p>
+			<p>Wind direction: {{winddirection}}</p>
+                        <p>Rain fall: {{rainfall}} mm</p>
+		</div>
+
+		<div class="home_button_con">
+			<a class="home_button" href="/" >Home</a>
+                </div>
+
+		<div class="chart_temp">
+                        <canvas id="chart_1" width="900" height="400"></canvas>
+                        <script>
+                        	const ctx = document.getElementById('chart_1').getContext('2d');
+                        	const myChart = new Chart(ctx, {
+                                	type: 'line',
+                                	data: {
+                                	  labels: {{ labels }},
+                                	  datasets: [{
+                                        	label: 'Temperature [°C]',
+                                        	data: {{ temperatures }},
+                                        	radius: 5,
+						linetension: 0.1,
+						backgroundColor: 'rgba(0,0,0,1)'
+                                        	}]
+                                	},
+					options: {
+						responsive: false,
+						scales: {
+      							x: {
+            							type: 'time',
+								time: {
+									minUnit: 'minute'
+								}
+      							}
+						}
+        					
+					}
+                        	});
+                        </script>
+                </div>
+
+		
+
+		<div class="chart_pre">
+                        <canvas id="chart_2" width="900" height="400"></canvas>
+                        <script>
+                                const ctx2 = document.getElementById('chart_2').getContext('2d');
+                                const myChart2 = new Chart(ctx2, {
+                                        type: 'line',
+                                        data: {
+                                          labels: {{ labels }},
+                                          datasets: [{
+                                                label: 'Pressure [kPa]',
+                                                data: {{ pressures }},
+                                                radius: 5,
+                                                linetension: 0.1,
+                                                backgroundColor: 'rgba(0,0,0,1)'
+                                                }]
+                                        },
+                                        options: {
+                                                responsive: false,
+                                                scales: {
+                                                        x: {
+                                                                type: 'time',
+                                                                time: {
+                                                                        minUnit: 'minute'
+                                                                }
+                                                        }
+                                                }
+
+                                        }
+                                });
+                        </script>
+                </div>
+
+                <div class="chart_speed">
+                        <canvas id="chart_4" width="900" height="400"></canvas>
+                        <script>
+                                const ctx4 = document.getElementById('chart_4').getContext('2d');
+                                const myChart4 = new Chart(ctx4, {
+                                        type: 'line',
+                                        data: {
+                                          labels: {{ labels }},
+                                          datasets: [{
+                                                label: 'Wind speed [km/h]',
+                                                data: {{ speeds }},
+                                                radius: 5,
+                                                linetension: 0.8,
+                                                backgroundColor: 'rgba(19,206,78,0.8)',
+                                                borderColor: 'rgba(19,206,78,0.8)'
+
+                                                },
+{
+                                                label: 'Wind gust speed [kmh/h]',
+                                                data: {{ gusts }},
+                                                radius: 5,
+                                                linetension: 0.8,
+                                                backgroundColor: 'rgba(21,29,230,0.8)',
+                                                borderColor: 'rgba(21,29,230,0)'
+                                                } 
+                                                   ]
+                                        },
+                                        options: {
+                                                responsive: false,
+                                                scales: {
+                                                        x: {
+                                                                type: 'time',
+                                                                time: {
+                                                                        minUnit: 'minute'
+                                                                }
+						
+                                                        }
+                                                  
+                                                }
+
+                                        }
+                                });
+                        </script>
+                </div>
+
+
+                <div class="chart_speed">
+                        <canvas id="chart_7" width="900" height="400"></canvas>
+                        <script>
+                                const ctx7 = document.getElementById('chart_7').getContext('2d');
+                                const myChart7 = new Chart(ctx7, {
+                                        type: 'radar',
+                                        data: {
+                                          labels: ['N','NE','E','SE','S','SW','W','NW'],
+                                          datasets: [{
+                                                label: 'Wind direction',
+                                                data: {{ list_dir }},
+                                                radius: 5,
+                                                borderColor: 'rgba(21,29,230,0.8)',
+                                                backgroundColor: 'rgba(21,29,230,0.1)'
+                                                
+                                                }]
+                                        },
+                                        options: {
+                                                responsive: false
+                                                                                                     
+                                                   
+
+                                        }
+                                });
+                        </script>
+                </div>
+
+
+		<div class="chart_hum">
+                        <canvas id="chart_3" width="900" height="400"></canvas>
+                        <script>
+                                const ctx3 = document.getElementById('chart_3').getContext('2d');
+                                const myChart3 = new Chart(ctx3, {
+                                        type: 'line',
+                                        data: {
+                                          labels: {{ labels }},
+                                          datasets: [{
+                                                label: 'Humidity [%]',
+                                                data: {{ humiditys }},
+                                                radius: 5,
+                                                linetension: 0.1,
+                                                backgroundColor: 'rgba(0,0,0,1)'
+                                                }]
+                                        },
+                                        options: {
+                                                responsive: false,
+                                                scales: {
+                                                        x: {
+                                                                type: 'time',
+                                                                time: {
+                                                                        minUnit: 'minute'
+                                                                }
+                                                        }
+                                                }
+
+                                        }
+                                });
+                        </script>
+                </div>
+		
+                <div class="chart_hum">
+                        <canvas id="chart_5" width="900" height="400"></canvas>
+                        <script>
+                                const ctx5 = document.getElementById('chart_5').getContext('2d');
+                                const myChart5 = new Chart(ctx5, {
+                                        type: 'bar',
+                                        data: {
+                                          labels: {{ labels }},
+                                          datasets: [{
+                                                label: 'Rainfall [mm]',
+                                                data: {{ rainfalls }},
+                                                
+                                                
+                                                backgroundColor: 'rgba(21,29,230,1)'
+                                                }]
+                                        },
+                                        options: {
+                                                responsive: false,
+                                                scales: {
+                                                        x: {
+                                                                type: 'time',
+                                                                time: {
+                                                                        minUnit: 'minute'
+                                                                }
+                                                        }
+                                                }
+
+                                        }
+                                });
+                        </script>
+                </div>
+		<br>
+
+		<div class="form_con">
+                        <form method="post">
+                                <label for="Nm">Number of measurements</label>
+                                <br>
+                                <input type="text" name="Nm" placeholder="250" value="{{ request.form['Nm'] }}">
+
+                                </input>
+                                <br>
+				<div class="home_button_con">
+                                	<button type="submit">Draw charts</button>
+				</div>
+                        </form>
+               </div>
+               <div class="footer">#juliFIZIK</div>
+	</body>
+
+</html>

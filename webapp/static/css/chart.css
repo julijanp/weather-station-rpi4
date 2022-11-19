@@ -1,0 +1,74 @@
+body {
+    text-align: center;
+    background-color: white;
+}
+p {
+    color: Black;
+    font-family: Shanti;
+    font-size: 1.2em;
+    display: inline-block;
+    margin:  20px;
+}
+
+.footer{
+       position: relative;     
+       text-align: center;    
+       top: 20px; 
+       width: 100%;
+       font-weight:bold; 
+       font-size: 1.2em;
+}  
+
+.chart_temp {
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+.chart_pre {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+
+}
+
+.chart_hum {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+
+}
+
+.chart_speed {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+}
+
+
+.home_button{
+  font: bold 18px Arial;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 6px 12px 6px 12px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.c_me{
+ font-weight:bold; 
+}
+
+.form_con{
+ font-weight:bold;
+ font-size: 1.2em;
+}
